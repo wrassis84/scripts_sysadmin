@@ -1,2 +1,2 @@
 # sysadmin
-Este repositório contém scripts em Shell para automação de rotinas de administração de sistemas GNU/Linux.
+Este repositório contém aruivos e scripts em Shell para administração de sistemas GNU/Linux.
