@@ -1,0 +1,63 @@
+1 - CONFIGURAÇÃO DA INTERFACE DE REDE:
+Esta configuração se aplica a uma VM (debian buster) criada no virtualbox, num host Kubuntu. A interface de rede da VM # está configurada como "Placa em modo Bridge"
+
+2 - CONFIGURAÇÃO DE ENDEREÇO IP ESTÁTICO:
+"A instalação por omissão do Debian configura a rede para obter um endereço dinâmico via DHCP. No entanto, para que o sistema seja configurado como um servidor, este deve ter um endereço IP estático."
+fonte: https://servidordebian.org/pt/squeeze/config/network/static_ip
+
+3 - CONFIGURAÇÃO DA INTERFACE DE REDE:
+A configuração das interfaces de rede é guardada no arquivo "/etc/network/interfaces". Para endereçamento estático, comente o trecho padrão abaixo:
+
+#The primary network interface
+#allow-hotplug enp0s3
+#iface enp0s3 inet dhcp
+
+E adicione este trecho ao final do arquivo:
+
+auto enp0s3
+iface enp0s3 inet static	#determina o endereçamento como estático
+address 192.168.0.100			#determina o endereço da placa de rede
+network 192.168.0.0				#determina o endereço da rede
+netmask 255.255.255.0			#determina a máscara de rede
+broadcast 192.168.0.255		#determina o endereço de broadcast da rede
+gateway 192.168.0.1				#determina o endereço do gateway da rede
+
+4 - CONFIGURAÇÃO DO(S) SERVIDOR(ES) DNS:
+Deve-se indicar - em "/etc/resolv.conf" - o endereço do(s) servidor(es) DNS. Numa configuração "caseira", o servidor DNS seria o próprio modem/roteador:
+domain localdomain
+search localdomain
+nameserver 192.168.0.1
+ 
+5 - REINICIALIZAÇÃO DA INTERFACE DE REDE PARA ATIVAR AS NOVAS CONFIGURAÇÕES (COMO ROOT):
+# ifdown enp0s3
+# ifup enp0s3
+
+6 - REINICIALIZAÇÃO DO SERVIÇO DE REDE:
+$ sudo systemctl restart networking
+
+7 - VERIFICAÇÃO:
+O comando "ip a" fornece informações sobre a configuração das interfaces de rede. A configuração da interface "enp0s3" deve exibir os parâmetros previamente definidos:
+
+$ ip a
+
+Verifique se é possível contactar servidores na Internet com o comando ping:
+
+$ ping -c3 www.debian.org
+PING www.debian.org (149.20.4.15) 56(84) bytes of data.
+64 bytes from mirror-isc3.debian.org (149.20.4.15): icmp_seq=1 ttl=52 time=221 ms
+64 bytes from mirror-isc3.debian.org (149.20.4.15): icmp_seq=2 ttl=52 time=213 ms
+64 bytes from mirror-isc3.debian.org (149.20.4.15): icmp_seq=3 ttl=52 time=214 ms
+
+--- www.debian.org ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 4ms
+rtt min/avg/max/mdev = 213.072/215.850/220.825/3.525 ms
+
+$ ping -c3 www.google.com
+PING www.google.com (216.58.202.4) 56(84) bytes of data.
+64 bytes from gru06s26-in-f4.1e100.net (216.58.202.4): icmp_seq=1 ttl=54 time=22.9 ms
+64 bytes from gru06s26-in-f4.1e100.net (216.58.202.4): icmp_seq=2 ttl=54 time=26.7 ms
+64 bytes from gru06s26-in-f4.1e100.net (216.58.202.4): icmp_seq=3 ttl=54 time=22.7 ms
+
+--- www.google.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 8ms
+rtt min/avg/max/mdev = 22.662/24.077/26.682/1.848 ms
