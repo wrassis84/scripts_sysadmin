@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# lsusers.sh - lista os usuarios do sistema. Utiliza as informaçoes presentes no arquivo
+# "/etc/passwd".
+
+# O arquivo "/etc/passwd" possui informaçoes sobre os usuarios do sistema; possui sete campos
+# separados por dois pontos, conforme indicado a seguir:
+# username:password:user_id:group_id:gecos(1):home_dir:shell
+# (1): O campo "gecos" e dividido como ":FullName,RoomAddress,WorkPhone,HomePhone,Others:" e
+# o campo "Others" pode ser subdividido em varios:
+# ":FullName,RoomAddress,WorkPhone,HomePhone,Other1,Other2,Other3:"
+
+# Autor: William Ramos de Assis Rezende		<wrassis84@gmail.com>
+# 
+
+cat /etc/passwd	| cut -d":" -f"1,3,4" | sort | less
