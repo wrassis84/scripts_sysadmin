@@ -1,4 +1,4 @@
-funtion pub_ip()
-{
-  curl ifconfig.me; echo -e "";
+function pub_ip(){
+	curl ifconfig.me
+#	echo -e ""
 }
