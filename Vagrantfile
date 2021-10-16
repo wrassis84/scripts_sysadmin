@@ -33,33 +33,29 @@ N = 4
 	    # General 2/4 - Advanced:
             vmdebian.customize ["modifyvm", :id, "--clipboard", "disabled"]
             vmdebian.customize ["modifyvm", :id, "--draganddrop", "disabled"]
-                        
 	    # System 1/3 - Motherboard:
             vmdebian.customize ["modifyvm", :id, "--memory", "512"]
-	    vmdebian.customize ["modifyvm", :id, "--pagefusion", "on"]
+			vmdebian.customize ["modifyvm", :id, "--pagefusion", "on"]
             vmdebian.customize ["modifyvm", :id, "--boot1", "disk"]
             vmdebian.customize ["modifyvm", :id, "--chipset", "piix3"]
             vmdebian.customize ["modifyvm", :id, "--mouse", "ps2"]
             vmdebian.customize ["modifyvm", :id, "--ioapic", "on"]
-	    vmdebian.customize ["modifyvm", :id, "--rtcuseutc", "on"]
+			vmdebian.customize ["modifyvm", :id, "--rtcuseutc", "on"]
 	    # System 2/3 - Processor:
             vmdebian.customize ["modifyvm", :id, "--cpus", "2"]
             vmdebian.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
             vmdebian.customize ["modifyvm", :id, "--pae", "on"]
 	    # System 3/3 - Acceleration:
-	    vmdebian.customize ["modifyvm", :id, "--paravirtprovider", "default"]
-	    vmdebian.customize ["modifyvm", :id, "--nestedpaging", "on"]
-
+			vmdebian.customize ["modifyvm", :id, "--paravirtprovider", "default"]
+			vmdebian.customize ["modifyvm", :id, "--nestedpaging", "on"]
 	    # Display 1/3 - Screen:
-	    vmdebian.customize ["modifyvm", :id, "--vram", "8"]
+			vmdebian.customize ["modifyvm", :id, "--vram", "8"]
             vmdebian.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
 	    # Audio 1/1 - Audio:
             vmdebian.customize ["modifyvm", :id, "--audio", "none"]
-	    
 	    # USB 1/1 - USB:
             vmdebian.customize ["modifyvm", :id, "--usb", "off"]
             vmdebian.customize ["modifyvm", :id, "--usbehci", "off"]
-            
         end
 
         #vmdebian.vm.provision "shell", path: "httpd_#{i}.sh"
@@ -67,9 +63,6 @@ N = 4
         #getenforce
         #firewall-cmd --state
         #SHELL
-    
     end
-    
     end
-
 end
