@@ -1,25 +1,25 @@
 #!/usr/bin/env bash
 #
-# ---------------------------------------------------------------- #
-# Scritp Name: sorte.sh                                            #
-# Description: Gera um número aleatório e exibe uma mensagem do    #
-# biscoito da sorte!                                               #
-# E-mail: wrassis84@gmail.com                                      #
-# LinkedIn: https://www.linkedin.com/in/wrar/                      #
-# Written by: William Ramos de Assis Rezende                       #
-# Maintenance: William Ramos de Assis Rezende                      #
-# ---------------------------------------------------------------- #
-# Usage:                                                           # 
-#		$ ./sorte.sh                                               #
-# ---------------------------------------------------------------- #
-# Bash Version:                                                    #
-#		Bash 5.1.4                                                 #
-# ---------------------------------------------------------------- #
-# Changelog/History:											   #
-#                                                                  #
-#                                                                  #
-#                                                                  #
-# ---------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
+# Scritp Name: sorte.sh                                                        #
+# Description: Gera um número aleatório e exibe uma mensagem do                #
+# biscoito da sorte!                                                           #
+# E-mail: wrassis84@gmail.com                                                  #
+# LinkedIn: https://www.linkedin.com/in/wrar/                                  #
+# Written by: William Ramos de Assis Rezende                                   #
+# Maintenance: William Ramos de Assis Rezende                                  #
+# ---------------------------------------------------------------------------- #
+# Usage:                                                                       # 
+#		$ ./sorte.sh                                                           #
+# ---------------------------------------------------------------------------- #
+# Bash Version:                                                                #
+#		Bash 5.1.4                                                             #
+# ---------------------------------------------------------------------------- #
+# Changelog/History:														   #
+#																	           #
+#																		       #
+#                                                                              #
+# ---------------------------------------------------------------------------- #
 #
 
 #clear
@@ -35,7 +35,6 @@ while true; do
 	echo    ""
 	#msg=$((($RANDOM % 70) + 1))
 	#msg=9
-	#echo -e -n "\tO número gerado foi: $msg" && sleep 3
 	echo -e -n "\tDigite um número entre 1 e 70: "
 	read msg
 	echo    ""
@@ -47,8 +46,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - A vida trará coisas boas se tiveres paciência!"
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -58,8 +55,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Demonstre amor e alegria em todas as oportunidades e verás que a paz nasce dentro de você."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -69,8 +64,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Não compense na ira o que lhe falta na razão!"
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -80,8 +73,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Defeitos e virtudes são apenas os dois lados da mesma moeda!"
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -91,8 +82,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - A maior de todas as torres começa no solo!"
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -102,8 +91,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Não há que ser forte. Há que ser flexível."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -113,21 +100,15 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Gente todos os dias arrumam os cabelos, por que não o coração?"
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
-
-
 
 	8)
 		clear
 		echo       ""
 		echo -e -n "\t$msg - Há três coisas que jamais voltam; a flecha lançada, a palavra dita e a oportunidade perdida."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -137,8 +118,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - A juventude não é uma época da vida, é um estado de espírito."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -148,8 +127,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Podemos escolher o que semear, mas somos obrigados a colher o que plantamos."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -159,8 +136,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Dê toda a atenção para a formação dos teus filhos, sobretudo por exemplos de tua própria vida."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -170,8 +145,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Siga os bons e aprenda com eles."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -181,8 +154,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Não importa o tamanho da montanha, ela não pode tapar o sol."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -192,8 +163,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - O bom-senso vai mais longe do que muito conhecimento."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
