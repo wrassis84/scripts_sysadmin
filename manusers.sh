@@ -1,5 +1,26 @@
 #!/usr/bin/env bash
 #
+# ---------------------------------------------------------------------------- #
+# Scritp Name: sorte.sh                                                        #
+# Description: Gera um número aleatório e exibe uma mensagem do                #
+# biscoito da sorte!                                                           #
+# E-mail: wrassis84@gmail.com                                                  #
+# LinkedIn: https://www.linkedin.com/in/wrar/                                  #
+# Written by: William Ramos de Assis Rezende                                   #
+# Maintenance: William Ramos de Assis Rezende                                  #
+# ---------------------------------------------------------------------------- #
+# Usage:                                                                       # 
+#		$ ./sorte.sh                                                   #
+# ---------------------------------------------------------------------------- #
+# Bash Version:                                                                #
+#		Bash 5.1.4                                                     #
+# ---------------------------------------------------------------------------- #
+# Changelog/History:					  		       #
+#									       #
+#									       #
+#                                                                              #
+# ---------------------------------------------------------------------------- #
+#
 
 # Bloquear a conta do usuário:
 sudo passwd	-l $1

@@ -27,7 +27,6 @@
 #echo -e -n "\tEste programa exibe uma mensagem do biscoito da sorte... Boa sorte! ;)"
 #echo       ""
 
-
 while true; do
 	clear
 	echo    ""
@@ -172,8 +171,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Quem quer colher rosas deve suportar os espinhos."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -183,8 +180,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - São os nossos amigos que nos ensinam as mais valiosas lições."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -194,8 +189,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Uma iniciativa malsucedida não significa o final de tudo. Sempre existe uma nova oportunidade."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -205,8 +198,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Aquele que se importa com o sentimento dos outros, não é um tolo."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -216,8 +207,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - A adversidade é um espelho que reflete o verdadeiro eu."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -227,8 +216,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Lamentar aquilo que não temos é desperdiçar aquilo que já possuímos."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -238,8 +225,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Uma bela flor é incompleta sem suas folhas."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -249,8 +234,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Sem o fogo do entusiasmo, não há o calor da vitória."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -260,8 +243,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Não há melhor negócio que a vida. A gente já obtém a troco de nada."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -271,8 +252,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - O riso é a menor distância entre duas pessoas."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -282,8 +261,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Você é jovem apenas uma vez. Depois precisa inventar outra desculpa."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -293,8 +270,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - É mais fácil conseguir o perdão do que a permissão."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -304,8 +279,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Os defeitos são mais fortes quando o amor é fraco."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -315,8 +288,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Amizade e Amor são coisas que podem virar uma só num piscar de olhos."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -326,8 +297,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Surpreender e ser surpreendido é o segredo do amor."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -337,8 +306,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Todo mundo é capaz de denominar uma dor, exceto quem a sente."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -348,8 +315,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - A paciência na adversidade é o sinal de um coração sensível."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -359,8 +324,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - A sorte favorece a mente bem preparada."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -370,8 +333,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Sua visão se tornará clara apenas quando você puder olhar dentro de seu coração."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -381,8 +342,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Quem olha para fora sonha; quem olha para dentro acorda."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -392,8 +351,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - As pessoas se esquecerão do que você disse e do que você fez… Mas nunca se esquecerão de como você as fez sentir."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -403,8 +360,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Espere pelo mais sábio dos conselhos: o tempo."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -414,8 +369,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Todas as coisas são difíceis antes de se tornarem fáceis."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -425,8 +378,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Você pode encontrar a si mesmo fazendo ou dizendo coisas que você nunca imaginou possíveis."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -436,8 +387,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Se você se sente só é porque construiu muros ao invés de pontes."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -447,8 +396,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Vencer é 90 por cento suor e 40 por cento técnica."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -458,8 +405,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - O amor está mais próximo do que você imagina."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -469,8 +414,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - A vida coloca em nossa frente opções."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -480,8 +423,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Você é do tamanho dos seus sonhos."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -491,8 +432,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Pare de procurar eternamente; a felicidade está bem ao seu lado."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -502,8 +441,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Conhecimento é a única virtude e ignorância é o único vício."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -513,8 +450,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - O nosso primeiro e último amor é o amor-próprio."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -524,8 +459,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Deixe de lado as preocupações e seja feliz."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -535,8 +468,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - A vontade das pessoas é a melhor das leis."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -546,8 +477,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Nós somos o que pensamos."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -557,8 +486,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - A maior barreira para o sucesso é o medo do fracasso."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -568,8 +495,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - O pessimista vê a dificuldade em cada oportunidade; O otimista vê a oportunidade em cada dificuldade."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -579,8 +504,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Muitas das grandes realizações do mundo foram feitas por homens cansados e desanimados que continuaram trabalhando."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -590,8 +513,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - O insucesso é apenas uma oportunidade para recomeçar de novo com mais inteligência."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -601,8 +522,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Demonstre amor e alegria em todas as oportunidades e verás que a paz nasce dentro de você."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -612,8 +531,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - O futuro pertence àqueles que acreditam na beleza de seus sonhos."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -623,8 +540,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Coragem é a resistência ao medo, domínio do medo, e não a ausência do medo."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -634,8 +549,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - O verdadeiro homem mede a sua força, quando se defronta com o obstáculo."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -645,8 +558,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Você precisa fazer aquilo que pensa que não é capaz de fazer."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -656,8 +567,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Quem quer vencer um obstáculo deve armar-se da força do leão e da prudência da serpente."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -667,8 +576,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - A adversidade desperta em nós capacidades que, em circunstâncias favoráveis, teriam ficado adormecidas."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -678,8 +585,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - A vida é para quem topa qualquer parada. Não para quem pára em qualquer topada."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -689,8 +594,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Motivação não é sinônimo de transformação, mas um passo em sua direção."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -700,8 +603,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - O que empobrece o ser humano, não é a falta de dinheiro, mais sim, a falta de fé, motivação e criatividade."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -711,8 +612,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Inspiração vem dos outros. Motivação vem de dentro de nós."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -722,8 +621,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Não acredite mais em pessoas especiais, mas em momentos especiais com pessoas habituais."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -733,8 +630,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - A nossa vida tem 4 sentidos: amar, sofrer, lutar e vencer. Ame muito, sofra pouco, lute bastante e vença sempre!"
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -744,8 +639,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Nada é por acaso… Acredite em seus sonhos e nos seus potenciais… Na vida tudo se supera."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -755,8 +648,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Acredite em milagres, mas não dependa deles."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -766,8 +657,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Você sempre será a sua melhor companhia!"
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -777,8 +666,6 @@ case $msg in
 		echo       ""
 		echo -e -n "\t$msg - Realize o óbvio, pense no improvável e conquiste o impossível."
 		echo       ""
-		#echo -e "\tTecle [ENTER] para exibir a próxima mensagem ;) "
-		#sleep 3
 		read
 		clear
 		;;
@@ -786,12 +673,9 @@ case $msg in
 	*)
 		clear
 		echo       ""
-		#echo -e -n "\tSe você está lendo esta mensagem, o script falhou em gerar o número aleatório! :("
 		echo -e -n "\tDigite um número entre 1 e 70!"
 		echo       ""
 		sleep 2 && clear && exit 0
-		#read
-		#clear
 		;;
 esac
 done
