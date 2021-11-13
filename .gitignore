@@ -1,0 +1,2 @@
+vagrant/environments/debian/.vagrant/*
+vagrant/environments/oracle_linux/.vagrant/*

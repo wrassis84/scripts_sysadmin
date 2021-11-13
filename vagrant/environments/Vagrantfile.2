@@ -1,0 +1,27 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Versão da API do Vagrant
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+	
+config.vm.box = 'debian/buster64'
+
+	config.vm.define "vmtest0" do |vmtest0|
+		vmtest0.vm.hostname = "node0"
+		vmtest0.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.150"
+	end
+
+  
+	config.vm.define "vmtest1" do |vmtest1|
+		vmtest1.vm.hostname = "node1"
+		vmtest1.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.160"
+	end
+
+
+	config.vm.define "vmtest2" do |vmtest2|
+		vmtest2.vm.hostname = "node2"
+		vmtest2.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.170"
+	end
+end

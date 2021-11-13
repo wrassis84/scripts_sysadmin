@@ -1,0 +1,17 @@
+---
+- hosts: all
+  tasks:
+     - name: "Updating Repository Package List in Debian Systems..."
+       when: ansible_os_family == "Debian"  
+       apt: update_cache=yes
+
+     - name: "Updating Debian Systems..."
+       when: ansible_os_family == "Debian"
+       apt:
+         autoclean: yes		# Remove useless packages from the cache
+         autoremove: yes	# Remove dependencies that are no longer required
+         upgrade: dist		# Performs an apt-get dist-upgrade
+
+     - name: "Updating RedHat Systems..."
+       when: ansible_os_family == "RedHat"
+       yum: name=* state=latest
