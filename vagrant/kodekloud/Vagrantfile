@@ -1,193 +1,55 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
+ENV["LC_ALL"] = "en_US.UTF-8"
 
-Vagrant.configure("2") do |config| #1
+Vagrant.configure("2") do |config|
+  
+  config.vm.provider "virtualbox" do |vm_machine|
+  # Customizations for better performance:  
+  # General 1/4 - Basic:
+  #vm_machine.customize ["modifyvm", :id, "--name", "ansiblecontroller"]
+  # General 2/4 - Advanced:
+  vm_machine.customize ["modifyvm", :id, "--clipboard", "disabled"]
+  vm_machine.customize ["modifyvm", :id, "--draganddrop", "disabled"]
+  # System 1/3 - Motherboard:
+  vm_machine.customize ["modifyvm", :id, "--memory", "512"]
+  vm_machine.customize ["modifyvm", :id, "--pagefusion", "on"]
+  vm_machine.customize ["modifyvm", :id, "--boot1", "disk"]
+  vm_machine.customize ["modifyvm", :id, "--chipset", "piix3"]
+  vm_machine.customize ["modifyvm", :id, "--mouse", "ps2"]
+  vm_machine.customize ["modifyvm", :id, "--ioapic", "on"]
+  vm_machine.customize ["modifyvm", :id, "--rtcuseutc", "on"]
+  # System 2/3 - Processor:
+  vm_machine.customize ["modifyvm", :id, "--cpus", "2"]
+  vm_machine.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
+  vm_machine.customize ["modifyvm", :id, "--pae", "on"]
+  # System 3/3 - Acceleration:
+  vm_machine.customize ["modifyvm", :id, "--paravirtprovider", "default"]
+  vm_machine.customize ["modifyvm", :id, "--nestedpaging", "on"]
+  # Display 1/3 - Screen:
+  vm_machine.customize ["modifyvm", :id, "--vram", "8"]
+  vm_machine.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
+  # Audio 1/1 - Audio:
+  vm_machine.customize ["modifyvm", :id, "--usb", "off"]
+  vm_machine.customize ["modifyvm", :id, "--usbehci", "off"]
+  end
 
-   		config.vm.define "ansiblecontroller" do |ansiblecontroller| #2
-		ansiblecontroller.vm.provider "virtualbox"
-		ansiblecontroller.vm.box = "generic/oracle7"
-		#ansiblecontroller.vm.box_version = "10.4.0"
-		ansiblecontroller.vm.box_check_update = true
-		#ansiblecontroller.vm.box_url = "file:///home/ewerton/CentOS-7-x86_64-Minimal-1908.json"
-		ansiblecontroller.vm.hostname = "ansiblecontroller"
-		ansiblecontroller.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.190"
-		#ansiblecontroller.vm.network "private_network", ip: "10.10.10.10"
-		#ansiblecontroller.vm.network "forwarded_port", guest: 80, host: 8080
-		ansiblecontroller.vm.post_up_message = "Infra As A Code - Vagrant in Action!"
-		ansiblecontroller.vm.check_guest_additions = true
-		ansiblecontroller.vm.gui = false
-		# Customizations for better performance:		
-		# General 1/4 - Basic:
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--name", "ansiblecontroller"]
-		# General 2/4 - Advanced:
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--clipboard", "disabled"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--draganddrop", "disabled"]
-		# System 1/3 - Motherboard:
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--memory", "512"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--pagefusion", "on"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--boot1", "disk"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--chipset", "piix3"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--mouse", "ps2"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--ioapic", "on"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--rtcuseutc", "on"]
-		# System 2/3 - Processor:
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--cpus", "2"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--pae", "on"]
-		# System 3/3 - Acceleration:
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--paravirtprovider", "default"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--nestedpaging", "on"]
-		# Display 1/3 - Screen:
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--vram", "8"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
-		# Audio 1/1 - Audio:
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--usb", "off"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--usbehci", "off"]
-		end #2
+  config.vm.define "controller" do |guest_ansible|
+    guest_ansible.vm.box = "generic/oracle7"
+    guest_ansible.vm.box_version = "3.5.2"
+    guest_ansible.vm.box_check_update = "true"
+    guest_ansible.vm.hostname = "ansiblecontroller"
+    guest_ansible.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.190"
+    guest_ansible.vm.post_up_message = "Infra As A Code - Vagrant in Action!"
+  end
 
-	N = 2
-	(1..N).each do |i|
-	    	config.vm.define "ansibletarget#{i}0" do |ansibletarget|
-			ansibletarget.vm.provider "virtualbox" do |ansibletarget|
-			ansibletarget.vm.box = "generic/oracle7"
-			#ansibletarget.vm.box_version = "10.4.0"
-			ansibletarget.vm.box_check_update = true
-			#ansibletarget.vm.box_url = "file:///home/ewerton/CentOS-7-x86_64-Minimal-1908.json"
-			ansibletarget.vm.hostname = "ansiblecontroller"
-			ansibletarget.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.19#{i}"
-			#ansibletarget.vm.network "private_network", ip: "10.10.10.10"
-			#ansibletarget.vm.network "forwarded_port", guest: 80, host: 8080
-			# Mensagem a ser exibida apos a máquina ser iniciada e quando a mesma for acessada via ssh:
-			ansibletarget.vm.post_up_message = "Infra As A Code - Vagrant in Action!"
-			ansibletarget.check_guest_additions = true
-			ansibletarget.gui = false
-			# Customizations for better performance:		
-			# General 1/4 - Basic:
-			ansibletarget.customize ["modifyvm", :id, "--name", "ansiblecontroller"]
-			# General 2/4 - Advanced:
-			ansibletarget.customize ["modifyvm", :id, "--clipboard", "disabled"]
-			ansibletarget.customize ["modifyvm", :id, "--draganddrop", "disabled"]
-			# System 1/3 - Motherboard:
-			ansibletarget.customize ["modifyvm", :id, "--memory", "512"]
-			ansibletarget.customize ["modifyvm", :id, "--pagefusion", "on"]
-			ansibletarget.customize ["modifyvm", :id, "--boot1", "disk"]
-			ansibletarget.customize ["modifyvm", :id, "--chipset", "piix3"]
-			ansibletarget.customize ["modifyvm", :id, "--mouse", "ps2"]
-			ansibletarget.customize ["modifyvm", :id, "--ioapic", "on"]
-			ansibletarget.customize ["modifyvm", :id, "--rtcuseutc", "on"]
-			# System 2/3 - Processor:
-			ansibletarget.customize ["modifyvm", :id, "--cpus", "2"]
-			ansibletarget.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
-			ansibletarget.customize ["modifyvm", :id, "--pae", "on"]
-			# System 3/3 - Acceleration:
-			ansibletarget.customize ["modifyvm", :id, "--paravirtprovider", "default"]
-			ansibletarget.customize ["modifyvm", :id, "--nestedpaging", "on"]
-			# Display 1/3 - Screen:
-			ansibletarget.customize ["modifyvm", :id, "--vram", "8"]
-			ansibletarget.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
-			# Audio 1/1 - Audio:
-			ansibletarget.customize ["modifyvm", :id, "--usb", "off"]
-			ansibletarget.customize ["modifyvm", :id, "--usbehci", "off"]
-			end
-		end
-	end
-
-end #1
-
-================================================
-
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
-
-Vagrant.configure("2") do |config| #1
-
-   		config.vm.define "ansiblecontroller" do |ansiblecontroller| #2
-		ansiblecontroller.vm.provider "virtualbox"
-		ansiblecontroller.vm.box = "generic/oracle7"
-		#ansiblecontroller.vm.box_version = "10.4.0"
-		ansiblecontroller.vm.box_check_update = true
-		#ansiblecontroller.vm.box_url = "file:///home/ewerton/CentOS-7-x86_64-Minimal-1908.json"
-		ansiblecontroller.vm.hostname = "ansiblecontroller"
-		ansiblecontroller.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.190"
-		#ansiblecontroller.vm.network "private_network", ip: "10.10.10.10"
-		#ansiblecontroller.vm.network "forwarded_port", guest: 80, host: 8080
-		ansiblecontroller.vm.post_up_message = "Infra As A Code - Vagrant in Action!"
-		ansiblecontroller.vm.check_guest_additions = true
-		ansiblecontroller.vm.gui = false
-		# Customizations for better performance:		
-		# General 1/4 - Basic:
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--name", "ansiblecontroller"]
-		# General 2/4 - Advanced:
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--clipboard", "disabled"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--draganddrop", "disabled"]
-		# System 1/3 - Motherboard:
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--memory", "512"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--pagefusion", "on"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--boot1", "disk"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--chipset", "piix3"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--mouse", "ps2"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--ioapic", "on"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--rtcuseutc", "on"]
-		# System 2/3 - Processor:
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--cpus", "2"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--pae", "on"]
-		# System 3/3 - Acceleration:
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--paravirtprovider", "default"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--nestedpaging", "on"]
-		# Display 1/3 - Screen:
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--vram", "8"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
-		# Audio 1/1 - Audio:
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--usb", "off"]
-		ansiblecontroller.vm.customize ["modifyvm", :id, "--usbehci", "off"]
-		end #2
-
-	N = 2
-	(1..N).each do |i|
-	    	config.vm.define "ansibletarget#{i}0" do |ansibletarget|
-			ansibletarget.vm.provider "virtualbox" do |ansibletarget|
-			ansibletarget.vm.box = "generic/oracle7"
-			#ansibletarget.vm.box_version = "10.4.0"
-			ansibletarget.vm.box_check_update = true
-			#ansibletarget.vm.box_url = "file:///home/ewerton/CentOS-7-x86_64-Minimal-1908.json"
-			ansibletarget.vm.hostname = "ansiblecontroller"
-			ansibletarget.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.19#{i}"
-			#ansibletarget.vm.network "private_network", ip: "10.10.10.10"
-			#ansibletarget.vm.network "forwarded_port", guest: 80, host: 8080
-			# Mensagem a ser exibida apos a máquina ser iniciada e quando a mesma for acessada via ssh:
-			ansibletarget.vm.post_up_message = "Infra As A Code - Vagrant in Action!"
-			ansibletarget.check_guest_additions = true
-			ansibletarget.gui = false
-			# Customizations for better performance:		
-			# General 1/4 - Basic:
-			ansibletarget.customize ["modifyvm", :id, "--name", "ansiblecontroller"]
-			# General 2/4 - Advanced:
-			ansibletarget.customize ["modifyvm", :id, "--clipboard", "disabled"]
-			ansibletarget.customize ["modifyvm", :id, "--draganddrop", "disabled"]
-			# System 1/3 - Motherboard:
-			ansibletarget.customize ["modifyvm", :id, "--memory", "512"]
-			ansibletarget.customize ["modifyvm", :id, "--pagefusion", "on"]
-			ansibletarget.customize ["modifyvm", :id, "--boot1", "disk"]
-			ansibletarget.customize ["modifyvm", :id, "--chipset", "piix3"]
-			ansibletarget.customize ["modifyvm", :id, "--mouse", "ps2"]
-			ansibletarget.customize ["modifyvm", :id, "--ioapic", "on"]
-			ansibletarget.customize ["modifyvm", :id, "--rtcuseutc", "on"]
-			# System 2/3 - Processor:
-			ansibletarget.customize ["modifyvm", :id, "--cpus", "2"]
-			ansibletarget.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
-			ansibletarget.customize ["modifyvm", :id, "--pae", "on"]
-			# System 3/3 - Acceleration:
-			ansibletarget.customize ["modifyvm", :id, "--paravirtprovider", "default"]
-			ansibletarget.customize ["modifyvm", :id, "--nestedpaging", "on"]
-			# Display 1/3 - Screen:
-			ansibletarget.customize ["modifyvm", :id, "--vram", "8"]
-			ansibletarget.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
-			# Audio 1/1 - Audio:
-			ansibletarget.customize ["modifyvm", :id, "--usb", "off"]
-			ansibletarget.customize ["modifyvm", :id, "--usbehci", "off"]
-			end
-		end
-	end
-
-end #1
+  # For multiple machines:
+  (1..3).each do |i|
+    config.vm.define "node#{i}" do |node|
+      node.vm.box = "generic/oracle7"
+      node.vm.box_version = "3.5.2"
+      node.vm.box_check_update = "true"
+      node.vm.hostname = "ansibletarget#{i}"
+      node.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.19#{i}"
+      node.vm.post_up_message = "Infra As A Code - Vagrant in Action!"
+    end
+  end
+end
