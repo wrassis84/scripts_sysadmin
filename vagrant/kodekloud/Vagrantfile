@@ -1,0 +1,54 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2" # Versão da API do Vagrant
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+#N = 4
+	(4..4).each do |i|
+    	config.vm.define "vmoracle1#{i}0" do |vmoracle|
+		vmoracle.vm.box = "generic/oracle7"
+		#vmoracle.vm.box_version = "10.4.0"
+		vmoracle.vm.box_check_update = true
+		#vmoracle.vm.box_url = "file:///home/ewerton/CentOS-7-x86_64-Minimal-1908.json"
+		vmoracle.vm.hostname = "ansiblecontroller"
+		vmoracle.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.1#{i}0"
+		#vmoracle.vm.network "private_network", ip: "10.10.10.10"
+		#vmoracle.vm.network "forwarded_port", guest: 80, host: 8080
+		# Mensagem a ser exibida apos a máquina ser iniciada e quando a mesma for acessada via ssh:
+		vmoracle.vm.post_up_message = "Infra As A Code - Vagrant in Action!"
+        
+		vmoracle.vm.provider "virtualbox" do |vmoracle|
+
+		vmoracle.check_guest_additions = true
+		vmoracle.gui = false
+		# General 1/4 - Basic:
+		vmoracle.customize ["modifyvm", :id, "--name", "ansiblecontroller"]
+		# General 2/4 - Advanced:
+		vmoracle.customize ["modifyvm", :id, "--clipboard", "disabled"]
+		vmoracle.customize ["modifyvm", :id, "--draganddrop", "disabled"]
+		# System 1/3 - Motherboard:
+		vmoracle.customize ["modifyvm", :id, "--memory", "512"]
+		vmoracle.customize ["modifyvm", :id, "--pagefusion", "on"]
+		vmoracle.customize ["modifyvm", :id, "--boot1", "disk"]
+		vmoracle.customize ["modifyvm", :id, "--chipset", "piix3"]
+		vmoracle.customize ["modifyvm", :id, "--mouse", "ps2"]
+		vmoracle.customize ["modifyvm", :id, "--ioapic", "on"]
+		vmoracle.customize ["modifyvm", :id, "--rtcuseutc", "on"]
+		# System 2/3 - Processor:
+		vmoracle.customize ["modifyvm", :id, "--cpus", "2"]
+		vmoracle.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
+		vmoracle.customize ["modifyvm", :id, "--pae", "on"]
+		# System 3/3 - Acceleration:
+		vmoracle.customize ["modifyvm", :id, "--paravirtprovider", "default"]
+		vmoracle.customize ["modifyvm", :id, "--nestedpaging", "on"]
+		# Display 1/3 - Screen:
+		vmoracle.customize ["modifyvm", :id, "--vram", "8"]
+		vmoracle.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
+		# Audio 1/1 - Audio:
+		vmoracle.customize ["modifyvm", :id, "--usb", "off"]
+		vmoracle.customize ["modifyvm", :id, "--usbehci", "off"]
+		end
+		end
+	end
+end
