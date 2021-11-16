@@ -32,20 +32,23 @@ Vagrant.configure("2") do |config|
   vm_machine.customize ["modifyvm", :id, "--usbehci", "off"]
   end
 
+  # Configure the controller node:
   config.vm.define "controller" do |guest_ansible|
-    guest_ansible.vm.box = "generic/oracle7"
-    guest_ansible.vm.box_version = "3.5.2"
+    guest_ansible.vm.box = "centos/7"
+    guest_ansible.vm.box_version = "2004.01"
     guest_ansible.vm.box_check_update = "true"
     guest_ansible.vm.hostname = "ansiblecontroller"
     guest_ansible.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.190"
     guest_ansible.vm.post_up_message = "Infra As A Code - Vagrant in Action!"
   end
 
+
+  # Configure the target nodes:
   # For multiple machines:
   (1..3).each do |i|
     config.vm.define "node#{i}" do |node|
-      node.vm.box = "generic/oracle7"
-      node.vm.box_version = "3.5.2"
+      node.vm.box = "centos/7"
+      node.vm.box_version = "2004.01"
       node.vm.box_check_update = "true"
       node.vm.hostname = "ansibletarget#{i}"
       node.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.19#{i}"
