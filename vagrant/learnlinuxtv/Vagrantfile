@@ -1,114 +1,62 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# Versão da API do Vagrant:
-VAGRANTFILE_API_VERSION = "2"
+ENV["LC_ALL"] = "en_US.UTF-8"
 
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-    vmdebian.vm.provider "virtualbox" do |vmdebian|
-    vmdebian.check_guest_additions = true
-    vmdebian.gui = false
-    # General 1/4 - Basic:
-    vmdebian.customize ["modifyvm", :id, "--name", "vagrant-vmdebian1#{i}0"]
-    # General 2/4 - Advanced:
-    vmdebian.customize ["modifyvm", :id, "--clipboard", "disabled"]
-    vmdebian.customize ["modifyvm", :id, "--draganddrop", "disabled"]
-    # System 1/3 - Motherboard:
-    vmdebian.customize ["modifyvm", :id, "--memory", "512"]
-    vmdebian.customize ["modifyvm", :id, "--pagefusion", "on"]
-    vmdebian.customize ["modifyvm", :id, "--boot1", "disk"]
-    vmdebian.customize ["modifyvm", :id, "--chipset", "piix3"]
-    vmdebian.customize ["modifyvm", :id, "--mouse", "ps2"]
-    vmdebian.customize ["modifyvm", :id, "--ioapic", "on"]
-    vmdebian.customize ["modifyvm", :id, "--rtcuseutc", "on"]
-    # System 2/3 - Processor:
-    vmdebian.customize ["modifyvm", :id, "--cpus", "2"]
-    vmdebian.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
-    vmdebian.customize ["modifyvm", :id, "--pae", "on"]
-    # System 3/3 - Acceleration:
-    vmdebian.customize ["modifyvm", :id, "--paravirtprovider", "default"]
-    vmdebian.customize ["modifyvm", :id, "--nestedpaging", "on"]
-    # Display 1/3 - Screen:
-    vmdebian.customize ["modifyvm", :id, "--vram", "8"]
-    vmdebian.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
-    # Audio 1/1 - Audio:
-    vmdebian.customize ["modifyvm", :id, "--audio", "none"]
-    # USB 1/1 - USB:
-    vmdebian.customize ["modifyvm", :id, "--usb", "off"]
-    vmdebian.customize ["modifyvm", :id, "--usbehci", "off"]
+Vagrant.configure("2") do |config|
+  
+  config.vm.provider "virtualbox" do |vm_machine|
+      # Customizations for better performance:  
+      # General 1/4 - Basic:
+      #vm_machine.customize ["modifyvm", :id, "--name", "ansiblecontroller"]
+      # General 2/4 - Advanced:
+      vm_machine.customize ["modifyvm", :id, "--clipboard", "disabled"]
+      vm_machine.customize ["modifyvm", :id, "--draganddrop", "disabled"]
+      # System 1/3 - Motherboard:
+      vm_machine.customize ["modifyvm", :id, "--memory", "512"]
+      vm_machine.customize ["modifyvm", :id, "--pagefusion", "on"]
+      vm_machine.customize ["modifyvm", :id, "--boot1", "disk"]
+      vm_machine.customize ["modifyvm", :id, "--chipset", "piix3"]
+      vm_machine.customize ["modifyvm", :id, "--mouse", "ps2"]
+      vm_machine.customize ["modifyvm", :id, "--ioapic", "on"]
+      vm_machine.customize ["modifyvm", :id, "--rtcuseutc", "on"]
+      # System 2/3 - Processor:
+      vm_machine.customize ["modifyvm", :id, "--cpus", "2"]
+      vm_machine.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
+      vm_machine.customize ["modifyvm", :id, "--pae", "on"]
+      # System 3/3 - Acceleration:
+      vm_machine.customize ["modifyvm", :id, "--paravirtprovider", "default"]
+      vm_machine.customize ["modifyvm", :id, "--nestedpaging", "on"]
+      # Display 1/3 - Screen:
+      vm_machine.customize ["modifyvm", :id, "--vram", "8"]
+      vm_machine.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
+      # Audio 1/1 - Audio:
+      vm_machine.customize ["modifyvm", :id, "--usb", "off"]
+      vm_machine.customize ["modifyvm", :id, "--usbehci", "off"]
+  end
+
+  # Configure the target nodes:
+  # For multiple Debian machines:
+  (1..2).each do |i|
+    config.vm.define "node#{i}" do |node|
+      node.vm.box = "debian/buster64"
+      node.vm.box_version = "10.20211018.1"
+      node.vm.box_check_update = "true"
+      node.vm.hostname = "ansiblenode#{i}"
+      node.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.20#{i}"
+      node.vm.post_up_message = "Infra As A Code - Vagrant in Action!"
     end
+  end
 
-#N = 2
-(1..2).each do |i|
-    config.vm.define "vmdebian1#{i}0" do |vmdebian|
-        vmdebian.vm.box = "debian/buster64"
-        # Define a versão da box utilizada pelo Vagrant:
-        #vmdebian.vm.box_version = "10.4.0"
-        # Define se o Vagrant vai buscar atualizaçoes da box utilizada. (true, false):
-        vmdebian.vm.box_check_update = true
-        #vmdebian.vm.box_url = "file:///home/ewerton/CentOS-7-x86_64-Minimal-1908.json"
-        # Define o hostname da VM:
-        vmdebian.vm.hostname = "vmdebian1#{i}0"
-        # Configuração da rede da VM - (IP fixo e em modo "bridge"):
-        vmdebian.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.1#{i}0"
-        #vmdebian.vm.network "private_network", ip: "10.10.10.10"
-        #vmdebian.vm.network "forwarded_port", guest: 80, host: 8080
-        # Mensagem a ser exibida apos a máquina ser iniciada e quando a mesma for acessada via ssh:
-        vmdebian.vm.post_up_message = "Infra As A Code - Vagrant in Action!"
-    end    
-end
-
-
-    vmoracle.vm.provider "virtualbox" do |vmoracle|
-    vmoracle.check_guest_additions = true
-    vmoracle.gui = false
-    # General 1/4 - Basic:
-    vmoracle.customize ["modifyvm", :id, "--name", "vagrant-vmoracle1#{i}0"]
-    # General 2/4 - Advanced:
-    vmoracle.customize ["modifyvm", :id, "--clipboard", "disabled"]
-    vmoracle.customize ["modifyvm", :id, "--draganddrop", "disabled"]
-    # System 1/3 - Motherboard:
-    vmoracle.customize ["modifyvm", :id, "--memory", "512"]
-    vmoracle.customize ["modifyvm", :id, "--pagefusion", "on"]
-    vmoracle.customize ["modifyvm", :id, "--boot1", "disk"]
-    vmoracle.customize ["modifyvm", :id, "--chipset", "piix3"]
-    vmoracle.customize ["modifyvm", :id, "--mouse", "ps2"]
-    vmoracle.customize ["modifyvm", :id, "--ioapic", "on"]
-    vmoracle.customize ["modifyvm", :id, "--rtcuseutc", "on"]
-    # System 2/3 - Processor:
-    vmoracle.customize ["modifyvm", :id, "--cpus", "2"]
-    vmoracle.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
-    vmoracle.customize ["modifyvm", :id, "--pae", "on"]
-    # System 3/3 - Acceleration:
-    vmoracle.customize ["modifyvm", :id, "--paravirtprovider", "default"]
-    vmoracle.customize ["modifyvm", :id, "--nestedpaging", "on"]
-    # Display 1/3 - Screen:
-    vmoracle.customize ["modifyvm", :id, "--vram", "8"]
-    vmoracle.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
-    # Audio 1/1 - Audio:
-    vmoracle.customize ["modifyvm", :id, "--audio", "none"]
-    # USB 1/1 - USB:
-    vmoracle.customize ["modifyvm", :id, "--usb", "off"]
-    vmoracle.customize ["modifyvm", :id, "--usbehci", "off"]
+  # For multiple CentOS machines:
+  (3..4).each do |i|
+    config.vm.define "node#{i}" do |node|
+      node.vm.box = "centos/7"
+      node.vm.box_version = "2004.01"
+      node.vm.box_check_update = "true"
+      node.vm.hostname = "ansiblenode#{i}"
+      node.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.20#{i}"
+      node.vm.post_up_message = "Infra As A Code - Vagrant in Action!"
     end
-
-#N = 2
-(3..4).each do |i|
-    config.vm.define "vmoracle1#{i}0" do |vmoracle|
-        vmoracle.vm.box = "generic/oracle7"
-        # Define a versão da box utilizada pelo Vagrant:
-        #vmoracle.vm.box_version = "10.4.0"
-        # Define se o Vagrant vai buscar atualizaçoes da box utilizada. (true, false):
-        vmoracle.vm.box_check_update = true
-        #vmoracle.vm.box_url = "file:///home/ewerton/CentOS-7-x86_64-Minimal-1908.json"
-        # Define o hostname da VM:
-        vmoracle.vm.hostname = "vmoracle1#{i}0"
-        # Configuração da rede da VM - (IP fixo e em modo "bridge"):
-        vmoracle.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.1#{i}0"
-        #vmoracle.vm.network "private_network", ip: "10.10.10.10"
-        #vmoracle.vm.network "forwarded_port", guest: 80, host: 8080
-        # Mensagem a ser exibida apos a máquina ser iniciada e quando a mesma for acessada via ssh:
-        vmoracle.vm.post_up_message = "Infra As A Code - Vagrant in Action!"
-    end
-end
+  end
 end
