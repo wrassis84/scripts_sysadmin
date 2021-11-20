@@ -1,4 +1,5 @@
-vagrant/environments/debian/.vagrant/*
-vagrant/environments/oracle_linux/.vagrant/*
+/vagrant/environments/debian/.vagrant/*
+/vagrant/environments/oracle_linux/.vagrant/*
 /vagrant/kodekloud/.vagrant/*
 /vagrant/learnlinuxtv/.vagrant/*
+./learnlinuxtv/.vagrant/*
