@@ -40,25 +40,25 @@ Vagrant.configure("2") do |config|
   # Configure the target nodes:
   # For multiple Debian machines:
   (1..2).each do |i|
-    config.vm.define "node#{i}" do |node|
+    config.vm.define "node#{i}_192.168.0.20#{i}" do |node|
       node.vm.box = "debian/buster64"
       node.vm.box_version = "10.20211018.1"
       node.vm.box_check_update = "true"
       node.vm.hostname = "ansiblenode#{i}"
       node.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.20#{i}"
-      node.vm.post_up_message = "Infra As A Code - Vagrant in Action!"
+      node.vm.post_up_message = "Infrastructure As Code - Vagrant in Action!"
     end
   end
 
   # For multiple CentOS machines:
   (3..4).each do |i|
-    config.vm.define "node#{i}" do |node|
+    config.vm.define "node#{i}_192.168.0.20#{i}" do |node|
       node.vm.box = "centos/7"
       node.vm.box_version = "2004.01"
       node.vm.box_check_update = "true"
       node.vm.hostname = "ansiblenode#{i}"
       node.vm.network "public_network", bridge: "enp7s0", ip: "192.168.0.20#{i}"
-      node.vm.post_up_message = "Infra As A Code - Vagrant in Action!"
+      node.vm.post_up_message = "Infrastructure As Code - Vagrant in Action!"
     end
   end
 end
