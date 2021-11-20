@@ -2,4 +2,4 @@
 /vagrant/environments/oracle_linux/.vagrant/*
 /vagrant/kodekloud/.vagrant/*
 /vagrant/learnlinuxtv/.vagrant/*
-./learnlinuxtv/.vagrant/*
+/learnlinuxtv/.vagrant/*
