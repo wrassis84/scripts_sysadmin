@@ -31,6 +31,8 @@ Vagrant.configure("2") do |config|
       vm_machine.customize ["modifyvm", :id, "--vram", "8"]
       vm_machine.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
       # Audio 1/1 - Audio:
+      vm_machine.customize ["modifyvm", :id, "--audio", "none"]
+      # USB 1/1 - USB:
       vm_machine.customize ["modifyvm", :id, "--usb", "off"]
       vm_machine.customize ["modifyvm", :id, "--usbehci", "off"]
   end
