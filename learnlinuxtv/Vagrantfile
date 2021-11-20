@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
       vm_machine.customize ["modifyvm", :id, "--clipboard", "disabled"]
       vm_machine.customize ["modifyvm", :id, "--draganddrop", "disabled"]
       # System 1/3 - Motherboard:
-      vm_machine.customize ["modifyvm", :id, "--memory", "400"]
+      vm_machine.customize ["modifyvm", :id, "--memory", "350"]
       vm_machine.customize ["modifyvm", :id, "--pagefusion", "on"]
       vm_machine.customize ["modifyvm", :id, "--boot1", "disk"]
       vm_machine.customize ["modifyvm", :id, "--chipset", "piix3"]
