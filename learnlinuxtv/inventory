@@ -1,4 +1,15 @@
+# Default inventory file
+
+# Debian servers:
+[debian]
 node1 ansible_host=192.168.0.201
 node2 ansible_host=192.168.0.202
+
+# CentOS servers:
+[centos]
 node3 ansible_host=192.168.0.203
 node4 ansible_host=192.168.0.204
+
+[servers]
+debian
+centos
