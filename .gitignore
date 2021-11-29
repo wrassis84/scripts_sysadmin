@@ -3,3 +3,5 @@
 /vagrant/kodekloud/.vagrant/*
 /vagrant/learnlinuxtv/.vagrant/*
 /learnlinuxtv/.vagrant/*
+/learnlinuxtv/log.json
+index.html
