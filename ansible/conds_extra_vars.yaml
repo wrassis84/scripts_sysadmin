@@ -1,0 +1,42 @@
+# This file: ./conds_extra_vars.yaml
+---
+- name: Loop & Task Control
+  hosts: nodes
+  become: true
+  vars:
+    inpkg: true
+    rmpkg: false
+    package_list:
+    - httpd
+    - firewalld
+    supported_os:
+    - RedHat
+    - CentOS
+    - Fedora
+    - Windows
+    - min_memory: 256
+  
+  tasks:
+    - name: Install Packages
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_list: "{{ package_list }}"  
+      # Here we have two conditions to satisfy for performing task. This equates
+      # to the logical 'and'.
+      when:
+        - inpkg
+        - ansible_distribution in supported_os
+        - min_memory is defined
+      
+    - name: Remove Packages
+      yum:
+        name: "{{ item }}"
+        state: absent
+      with_list: "{{ package_list }}"  
+      # Here we have two conditions to satisfy for performing task. This equates
+      # to the logical 'and'.
+      when:
+        - rmpkg
+        - ansible_distribution in supported_os
+...

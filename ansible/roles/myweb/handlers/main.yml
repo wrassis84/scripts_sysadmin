@@ -1,0 +1,13 @@
+---
+# handlers file for myweb
+- name: Restart firewalld
+  service:
+    name: firewalld
+    enabled: true
+    state: restarted
+
+- name: Restart webservice
+  service:
+    name: "{{ web_service }}"
+    enabled: true
+    state: restarted

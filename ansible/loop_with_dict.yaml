@@ -1,0 +1,21 @@
+# This file: ./loop_with_dict.yml
+---
+- name: Loop & Task Control
+  hosts: nodes
+  become: true
+  vars:
+    crew:
+      turanga: 'leela'
+      philiph: 'fry'
+      bender: 'rodriguez'
+      hermes: 'conrad'
+      barbados: 'slim'
+      flexo: 'rodriguez'
+      hubert: 'farnsworth'
+      zapp: 'branningan'
+  tasks:
+    - name: Ansible Dictionary Loop Example With Planet Express Crew
+      debug:
+        msg: "Firstname is {{ item.key }} and Lastname is {{ item.value }}"
+      with_dict: "{{ crew }}"
+...

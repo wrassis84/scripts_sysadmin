@@ -1,0 +1,15 @@
+{# This file: ./userlist.j2 #}
+----------------------------------------------------------------------------
+			This Was Deployed by Ansible!
+----------------------------------------------------------------------------
+
+{# For Statement #} {# This is a Comment! #}
+{% for user in users %} 
+{# This will print an index next to the item #}
+{{ loop.index }}: {{ user }}
+{% endfor %}
+{# This template will be deployed on '/tmp/userlist.txt' #}
+{# (the file will be created or replaced) on remote targets. #}
+----------------------------------------------------------------------------
+			This Was Deployed by Ansible!
+----------------------------------------------------------------------------

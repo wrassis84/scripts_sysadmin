@@ -1,0 +1,19 @@
+---
+# This file: ./myweb.yml
+- name: Playing with roles
+  hosts: nodes
+  become: true
+  tasks:
+    - name: Myweb role
+      include_role:
+        name: myweb
+
+- name: Test intranet web server
+  hosts: localhost
+  become: false
+  tasks:
+    - name: Connect to intranet webserver
+      uri:
+        url: http://node1
+        status_code: 200
+...

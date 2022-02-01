@@ -1,0 +1,7 @@
+# This file: ./ansible_facts.yml
+- hosts: nodes
+  gather_facts: true
+  tasks:
+    - name: Show details
+      debug:
+        msg: "{{ ansible_distribution }} {{ ansible_hostname }} {{ ansible_default_ipv4['address'] }}"

@@ -1,0 +1,22 @@
+# This file: ./ansible_facts.yml
+- hosts: all
+  gather_facts: true
+  tasks:
+    - name: Ansible facts for MAC Address
+      debug:
+        # msg: "{{ ansible_default_ipv4.macaddress }}"
+        msg: "{{ ansible_default_ipv4['macaddress'] }}"
+    
+    - name: Ansible facts for Architecture
+      debug:
+        msg: "{{ ansible_architecture }}"
+    
+    - name: Ansible facts for IP Address
+      debug:
+        msg: "{{ ansible_default_ipv4['address'] }}"
+    
+    - name: Ansible facts with conditionals
+      debug:
+        msg: "{{ ansible_distribution_version }}"
+      # The message above only will be showed IF "ansible_distribution" is not equal to "CentOS".
+      when: ansible_distribution != "CentOS"

@@ -1,0 +1,26 @@
+# This file: ./no_loop_sample.yaml
+---
+- name: Ansible no loop example
+  hosts: nodes
+  become: true
+  tasks:
+    - name: Install httpd 
+      yum:
+        name: httpd
+        state: absent #present
+
+    - name: Install wget 
+      yum:
+        name: wget
+        state: absent #present
+    
+    - name: Install ca-certificates
+      yum:
+        name: ca-certificates
+        state: absent #present
+    
+    - name: Install git 
+      yum:
+        name: git
+        state: absent #present
+...

@@ -1,0 +1,16 @@
+# This file: ./loop_sample.yaml
+---
+- name: Ansible loop example
+  hosts: nodes
+  become: true
+  tasks:
+    - name: Install httpd, wget, ca-certificates and git
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - httpd
+        - wget
+        - ca-certificates
+        - git
+...

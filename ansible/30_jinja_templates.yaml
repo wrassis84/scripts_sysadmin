@@ -1,0 +1,41 @@
+# This file: ./30_jinja_templates.yaml
+---
+- name: Use Jinja2 Templates 
+  hosts: nodes
+  become: true
+  vars:
+    system_admin_email: admin@lab.local
+    system_admin_phone: '1800 0000 1111'
+    users:
+      - John
+      - Liza
+      - Raj
+      - Bender
+      - Vinod
+      - Fry
+      - Leela
+      - Gianechini
+      - Farnsworth
+
+  # Ansible continues to execute the playbook even if some of the tasks fail:
+  ignore_errors: yes
+
+  tasks:
+    - name: Deploying motd
+      template:
+        # Here, we put the destination where the template content will be paste:
+        dest: /etc/motd
+        # Here, we put the source template that contains what we want to push on
+        # remote targets:
+        # NOTE: to naming jinja2 template files, we use the extension '.j2' ;)
+        src: motd.j2
+    
+    - name: Deploying user list
+      template:
+        # Here, we put the destination where the template content will be paste:
+        dest: /tmp/userlist.txt
+        # Here, we put the source template that contains what we want to push on
+        # remote targets:
+        # NOTE: to naming jinja2 template files, we use the extension '.j2' ;)
+        src: userlist.j2
+...

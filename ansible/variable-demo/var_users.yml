@@ -1,0 +1,25 @@
+# This file: ./var_users.yml
+users:
+  john:
+    firstname: Jonh
+    lastname: Smith
+    designation: Admin
+    location: London
+
+  linda:
+    firstname: Linda
+    lastname: Marry
+    designation: Operator
+    location: Greece
+  
+  james:
+    firstname: James
+    lastname: Black
+    designation: Operator
+    location: Brazil
+
+  william:
+    firstname: William
+    lastname: Rezende
+    designation: Engineer
+    location: Dublin

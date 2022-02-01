@@ -1,0 +1,27 @@
+# This file: ./loop_with_list2.yml
+---
+- name: Loop & Task Control
+  hosts: nodes
+  become: true
+  vars:
+    userlist:
+      - leela
+      - fry
+      - bender
+      - hermes
+      - barbados
+      - flexo
+      - hubert
+      - zoidberg
+      - zapp
+  tasks:
+    - name: Show Users of Express Planet
+      debug:
+        msg: "{{ item }}"
+      with_list: "{{ userlist }}"
+    
+    - name: Create Users of Express Planet
+      user:
+        name: "{{ item }}"
+      with_list: "{{ userlist }}"
+...

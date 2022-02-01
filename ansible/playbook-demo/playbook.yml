@@ -1,0 +1,46 @@
+---
+- name: Install and configure httpd.
+  hosts: nodes
+  become: yes
+  tasks:
+    - name: Install httpd and firewalld.
+      yum:
+        name:
+          - httpd
+          - firewalld
+        state: latest
+    
+    - name: Enable and start httpd.
+      service:
+        name: httpd
+        enabled: true
+        state: started
+
+    - name: Enable and start firewalld.
+      service:
+        name: firewalld
+        enabled: true
+        state: started
+
+    - name: Open firewall ports.
+      firewalld:
+        service: http
+        permanent: true
+        state: enabled
+        immediate: yes
+
+    - name: Copy HTML content.
+      copy:
+        content: "Welcome to your Website <br>(This is deployed using Ansible)"
+        dest: /var/www/html/index.html
+
+# Here starts a new play. Pay attention at level of indentation!
+- name: Test and verify Webservers
+  hosts: localhost
+  become: no
+  tasks:
+    - name: Connect to Webserver.
+      uri:
+        url: http://node2
+        # the status_code should be "200" if no, returns error.
+        status_code: 200

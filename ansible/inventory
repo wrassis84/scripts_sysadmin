@@ -1,0 +1,7 @@
+# This file: ./inventory
+[nodes]
+node1
+node2
+
+[myself]
+localhost ansible_connection=local

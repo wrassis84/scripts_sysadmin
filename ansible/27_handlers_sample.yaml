@@ -1,0 +1,52 @@
+# This file: ./27_handlers_sample.yaml
+---
+- name: Enable Intranet Services
+  hosts: nodes
+  become: yes
+  tasks:
+    - name: Install Httpd and Firewalld
+      yum:
+        name:
+        - httpd
+        - firewalld
+        state: latest
+      notify:
+        - Restart httpd
+
+    - name: Enable and Run Firewalld
+      service:
+        name: firewalld
+        enabled: true
+        state: started
+
+    - name: Firewalld Permitt Httpd Service
+      firewalld:
+        service: http
+        permanent: true
+        state: enabled
+        immediate: yes
+
+    - name: Test Html Page is Installed
+      copy:
+        content: "Welcome to the example.com intranet!\n"
+        dest: /var/www/html/index.html
+      notify:
+        - Restart httpd
+
+# Here, we name the handler uniquely.
+  handlers:
+    - name: Restart httpd
+      service:
+        name: httpd
+        enabled: true
+        state: restarted
+
+- name: Test Intranet Web Server
+  hosts: localhost
+  become: no
+  tasks:
+    - name: Connect to Intranet Web Server
+      uri:
+        url: http://node1.techbeatly.com
+        status_code: 200
+...

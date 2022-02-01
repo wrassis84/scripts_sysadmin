@@ -1,0 +1,15 @@
+--
+- name: Install Web Package
+  hosts: nodes
+  become: true
+  vars_files:
+    - var_users.yml
+  tasks:
+    - name: Check uptime 
+      shell: 'uptime'
+      register: shell_output
+
+    - name: Print the outuput in the registered variable called "shell_output"
+      debug:
+        msg: "{{ shell_output.stdout_lines }}"
+...

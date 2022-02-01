@@ -1,0 +1,22 @@
+# This file: ./tasks_ctrl_sample2.yaml
+---
+- name: Loop & Task Control
+  hosts: nodes
+  become: true
+  tasks:
+    - name: Install Packages
+      yum:
+        name:
+          - httpd
+          - firewalld
+        state: present
+
+    - name: Enable httpd & firewalld Services
+      service:
+        name: "{{ item }}"
+        state: started
+        enabled: true
+      loop:
+        - httpd
+        - firewalld
+...

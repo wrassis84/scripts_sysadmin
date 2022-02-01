@@ -1,0 +1,10 @@
+# This file: ./custom_facts.yml
+---
+- name: Test custom facts
+  hosts: nodes
+  tasks:
+    - name: Get web details
+      debug:
+        msg: "{{ ansible_local.web.business.criticality }}"
+      when:  ansible_local.web.business.criticality is defined 
+...

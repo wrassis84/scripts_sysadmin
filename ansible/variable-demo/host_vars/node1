@@ -1,0 +1,3 @@
+ansible_user: sysadmin
+web_package: nginx
+web_service: nginx

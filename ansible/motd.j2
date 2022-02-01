@@ -1,0 +1,22 @@
+{# This file: ./motd.j2 #}
+-----------------------------------------------------------------------------------
+			This Was Deployed by Ansible!
+-----------------------------------------------------------------------------------
+
+Welcome to {{ ansible_facts.hostname }}
+IP Address: {{ ansible_facts.default_ipv4.address }}
+
+WARNING  WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING    WARNING
+WARNING									    WARNING
+WARNING  Access is restricted!						    WARNING
+WARNING  If You Are Not Authorized To Use It, Please Logout!		    WARNING
+WARNING 								    WARNING
+WARNING  If you have any issues, please contact: {{ system_admin_email }}.  WARNING
+WARNING									    WARNING
+WARNING  Phone: {{ system_admin_phone | default ('1800 1111 2222') }}.	    WARNING
+WARNING									    WARNING
+WARNING WARNING	WARNING	WARNING	WARNING	WARNING	WARNING	WARNING	WARNING	    WARNING
+
+-----------------------------------------------------------------------------------
+			This Was Deployed by Ansible!
+-----------------------------------------------------------------------------------

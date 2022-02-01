@@ -1,0 +1,11 @@
+# This file: ./32_roles.yaml
+---
+- name: Install Git
+  hosts: node1
+  become: true
+  roles:
+    - role: geerlingguy.git
+      # If enabled, the below line, will override the 'version' variable
+      # value in '/roles/geerlingguy.git/defaults/main.yml'.
+      # version: "2.30.0"
+...

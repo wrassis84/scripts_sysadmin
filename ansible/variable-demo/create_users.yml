@@ -1,0 +1,12 @@
+---
+# This file: ./create_users.yml
+- name: Create users
+  hosts: nodes
+  become: true
+  vars_files:
+    - var_users.yml
+  tasks:
+    - name: Show users first
+      debug:
+        msg: "{{ users['william']['lastname'] }}"
+...

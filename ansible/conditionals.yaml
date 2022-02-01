@@ -1,0 +1,32 @@
+# This file: ./conditionals.yaml
+---
+- name: Loop & Task Control
+  hosts: nodes
+  become: true
+  vars:
+    install_package: "ok"
+    userlist:
+      - leela
+      - fry
+      - bender
+      - hermes
+      - barbados
+      - flexo
+      - hubert
+      - zoidberg
+      - zapp
+  tasks:
+    - name: Create Users of Express Planet
+      user:
+        name: "{{ item }}"
+      with_list: "{{ userlist }}"
+
+    - name: Install Packages
+      yum:
+        name:
+          - httpd
+          - firewalld
+        state: present
+      # when are using 'not boolean' variables, we must use them with double quotes.
+      when: install_package == "ok"
+...

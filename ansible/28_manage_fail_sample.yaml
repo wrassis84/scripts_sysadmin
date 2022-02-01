@@ -1,0 +1,33 @@
+# This file: ./28_manage_fail_sample.yaml
+---
+- name: Package installation
+  hosts: nodes
+  become: yes
+  tasks:
+    - name: Install wrong package
+      yum:
+        name: wrongpackage
+        state: present
+      ignore_errors: true
+      register: error_message
+    
+    - name: Display
+      debug:
+        msg: "{{ error_message }}"
+
+    - name: Fail if there is failed status
+      fail:
+        msg: "The state is failed!"
+      # "failed" is a variable inside the register variable we created above in "register: error_message"
+      # statement. 
+      when: error_message.failed == true
+
+    - name: Install good package
+      yum:
+        name: httpd
+        state: present
+    
+    - name: Message
+      debug:
+        msg: "Package Done"
+...

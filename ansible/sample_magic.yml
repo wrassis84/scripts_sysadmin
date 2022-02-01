@@ -1,0 +1,27 @@
+# This file: ./sample_magic.yml
+
+---
+ - name: Learn Magic Variables 
+   hosts: nodes
+   # This will limit the output to hostvars:
+   gather_facts: false
+   tasks:
+    - name: Show Inventory Hostname
+      debug:
+        msg: "{{ inventory_hostname }}"
+
+    - name: Show Groups
+      debug:
+        # A dictionary/map with all the groups in inventory and each group has the list of hosts that belong to it:
+        msg: "{{ groups }}"
+    
+    - name: Show Group
+      debug:
+        # List of groups the current host is part of:
+        msg: "{{ group_names }}"
+
+    - name: Show Host Variables
+      debug:
+        # A dictionary/map with all the hosts in inventory and variables assigned to them:
+        msg: "{{ hostvars }}"
+...

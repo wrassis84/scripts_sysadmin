@@ -1,0 +1,18 @@
+# This file: ./28_manage_fail_changed.yaml
+---
+- name: Changed When
+  hosts: nodes
+  become: true
+  tasks:
+    - name: Uptime
+      shell: uptime
+      register: uptime_message
+      # Now, only if the word 'Success' appears in output of "uptime_message" that will have a change at all.
+      changed_when: "'Success' in uptime_message"
+
+    - name: Print message
+      debug:
+        msg: "{{ uptime_message }}"
+      # How we not define the variable 'myvar', this will result on error.
+      failed_when: not myvar is defined
+...

@@ -1,0 +1,47 @@
+# This file: ./29_blocks_rescue_always.yaml
+---
+- name: Install, Start and Enable Apache Using Block of Tasks
+  hosts: nodes
+  become: true
+  # Ansible continues to execute the playbook even if some of the tasks fail:
+  # ignore_errors: yes
+
+  tasks:
+  # Here, we define the block of tasks:
+    - block:
+      - name: Install Apache and Memcached
+        yum:
+          name:
+          - httpd
+          - memcached
+          state: latest
+
+      - name: Start Apache, if not Started
+        service:
+          name: httpde
+          state: started
+
+      - name: Enable Apache
+        service:
+          name: httpd
+          enabled: yes
+      when: ansible_facts['distribution'] == 'CentOS'
+  
+      # Here, we define the rescue block. So, if one of three previous tasks from
+      # the block fails, the tasks of rescue block will be executed:
+      rescue:
+        - name: Ansible is inside the rescue block
+          debug:
+            msg: "Some of previous tasks has failed! :("
+
+        - name: Ansible is still inside the rescue block
+          debug:
+            msg: "The task '{{ ansible_failed_task.name}}' has failed!"
+
+      # You can also add an always section to a block. Tasks in the always
+      # section run no matter what the task status of the previous block is:
+      always:
+        - name: Always do this
+          debug:
+            msg: "This always executes! ;)"
+...
