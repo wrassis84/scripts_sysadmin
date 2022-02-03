@@ -92,7 +92,6 @@ nmap <F12> <Esc>:source ~/.vimrc<cr>
 vmap <F12> <Esc>:source ~/.vimrc<cr>
 imap <F12> <Esc>:source ~/.vimrc<cr>
 
-
 " Map the keys CTRL+DOWN to move lines down (on normal mode):
 nmap <C-Down> ddp
 
